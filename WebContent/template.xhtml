@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="./css/default.css" rel="stylesheet" type="text/css" />
+<link href="./css/cssLayout.css" rel="stylesheet" type="text/css" />
+<title>Mobile Tracking</title>
+</head>
+
+<body>
+
+
+<div id="top_menu"><f:view>
+	<h:form>
+		<rich:toolBar>
+			<rich:dropDownMenu>
+				<f:facet name="label">
+					<h:outputText value="Catálogos" />
+				</f:facet>
+				<rich:menuItem icon="/imagenes/auxiliar.png" value="Edificios Historicos"
+					action="#{edificioHistoricoBean.llenarTabla}" />
+				<rich:menuItem icon="/imagenes/bancaria.png" value="Usuarios"
+					action="#{usuarioBean.llenarTabla}" />
+			</rich:dropDownMenu>
+			<rich:dropDownMenu>
+				<f:facet name="label">
+					<h:outputText value="Reportes" />
+				</f:facet>
+				<rich:menuItem icon="/imagenes/auxiliar.png" value="Edificios Historicos mas visitos"
+					action="#{edificioHistoricoBean.llenarTabla}" />
+				<rich:menuItem icon="/imagenes/bancaria.png" value="Trayectorias de Usuarios"
+					action="#{usuarioBean.llenarTabla}" />
+			</rich:dropDownMenu>
+			<rich:dropDownMenu>
+				<f:facet name="label">
+					<h:outputText value="Usuarios Activos" />
+				</f:facet>
+				<rich:menuItem icon="/imagenes/auxiliar.png" value="Mapa de Usuarios Activos"
+					action="#{mapaBean.llenarTabla}" />
+			</rich:dropDownMenu>
+			<rich:dropDownMenu>
+				<f:facet name="label">
+					<h:outputText value="Salir" />
+				</f:facet>
+				<rich:menuItem icon="/imagenes/Salir.png" value="Salir" action="#{loginBean.salir}" />
+			</rich:dropDownMenu>
+		</rich:toolBar>
+	</h:form>
+</f:view></div>
+<div>
+<div id="left"><ui:insert name="left">Left</ui:insert></div>
+<div id="content" class="left_content"><ui:insert name="content">Right</ui:insert>
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">  
+   	
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="locations">  
+            <list>  
+                <value>classpath:jdbc.properties</value>  
+            </list>  
+        </property>  
+    </bean>     
+   	<!-- ···························· -->
+	<!-- Configuracion del datasource -->
+	<!-- ···························· -->  
+  
+    <bean id="dataSource"  
+        class="org.apache.commons.dbcp.BasicDataSource"  
+        destroy-method="close">  
+        <property name="driverClassName">  
+            <value>com.mysql.jdbc.Driver</value>  
+        </property>  
+        <property name="url">  
+            <value>${url}</value>  
+        </property>  
+        <property name="username">   
+            <value>${usuario}</value>   
+        </property>  
+        <property name="password">    
+            <value>${pass}</value>  
+        </property>  
+    </bean> 
+  
+	<!-- ·························· -->
+	<!-- Configuracion de hibernate -->
+	<!-- ·························· -->    
+  
+    <bean id="sessionFactory"  
+        class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">  
+        <property name="dataSource">  
+            <ref bean="dataSource" />  
+        </property>  
+        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com.mx.uaz.mobileTracking.model</value>                
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <value>
+                hibernate.dialect=org.hibernate.dialect.MySQLDialect
+                hibernate.query.substitutions=true 'Y', false 'N'
+                hibernate.cache.use_second_level_cache=true
+                hibernate.cache.provider_class
+                hibernate.show_sql=false
+   				hibernate.c3p0.testConnectionOnCheckout=false
+   				hibernate.transaction.auto_close_session=true 				
+            </value>
+        </property>
+        
+    </bean>  
+      
+    <bean id="transactionManager"  
+        class="org.springframework.orm.hibernate3.HibernateTransactionManager">  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>  
+      
+    <!-- ······················································ -->  
+    <!-- Definicion de los DAO a utilizar por la aplicacion     -->  
+    <!-- ······················································ -->  
+    <bean id="edificioHistoricoDAO"  
+        class="com.mx.uaz.mobileTracking.DAO.Impl.EdificioHistoricoDAOImpl">  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean> 
+    <bean id="registroCoordenadasDAO"  
+        class="com.mx.uaz.mobileTracking.DAO.Impl.RegistroCoordenadasDAOImpl">  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>
+    <bean id="usuarioDAO"  
+        class="com.mx.uaz.mobileTracking.DAO.Impl.UsuarioDAOImpl">  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean> 
+    <bean id="visitaDAO"  
+        class="com.mx.uaz.mobileTracking.DAO.Impl.VisitaDAOImpl">  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>
+    <bean id="preferenciaUsuarioDAO"  
+        class="com.mx.uaz.mobileTracking.DAO.Impl.PreferenciaUsuarioDAOImpl">  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>
+    <!-- ······················································ -->  
+    <!-- Definicion de los Managers a utilizar por la aplicacion     -->  
+    <!-- ······················································ -->  
+	
+	<bean id="edificioHistoricoService" 
+    	class="com.mx.uaz.mobileTracking.service.Impl.EdificioHistoricoServiceImpl" >
+	    <property name="edificioHistoricoDAO" ref="edificioHistoricoDAO" />
+    </bean>  
+    <bean id="registroCoordenadasService" 
+    	class="com.mx.uaz.mobileTracking.service.Impl.RegistroCoordenadasServiceImpl" >
+	    <property name="registroCoordenadasDAO" ref="registroCoordenadasDAO" />
+    </bean>  
+    <bean id="usuarioService" 
+    	class="com.mx.uaz.mobileTracking.service.Impl.UsuarioServiceImpl" >
+	    <property name="usuarioDAO" ref="usuarioDAO" />
+    </bean>  
+    <bean id="visitaService" 
+    	class="com.mx.uaz.mobileTracking.service.Impl.VisitaServiceImpl" >
+	    <property name="visitaDAO" ref="visitaDAO" />
+    </bean>  
+    <bean id="preferenciaUsuarioService" 
+    	class="com.mx.uaz.mobileTracking.service.Impl.PreferenciaUsuarioServiceImpl" >
+	    <property name="preferenciaUsuarioDAO" ref="preferenciaUsuarioDAO" />
+    </bean>  
+    
+  </beans>

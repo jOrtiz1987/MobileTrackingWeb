@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+	
+	<ui:composition template="../template.xhtml">
+	
+		<script>
+	      function initMap() {
+	        var myLatLng = {lat: 22.774534, lng: -102.574164};
+	
+	        var map = new google.maps.Map(document.getElementById('map'), {
+	          zoom: 4,
+	          center: myLatLng
+	        });
+	
+	        var marker = new google.maps.Marker({
+	          position: myLatLng,
+	          map: map,
+	          title: 'Centro Zacatecas!'
+	        });
+	      }
+	    </script>
+	
+	    <style>
+	        .optionList {
+	          height:30px;
+	        }
+	    </style>    
+	    <ui:define name="content">
+			<h:panelGrid columns="2">
+				<rich:gmap  gmapVar="map" zoom="16" style="width:1300px;height:550px" gmapKey="#{mapaBean.mapKey}" id="gmap" 
+					mapType="G_NORMAL_MAP" lat="22.774534" lng="-102.574164" onclick="initMap"/>
+			</h:panelGrid>  
+		</ui:define>
+	</ui:composition>
+
+</html>

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<head>
+<title>Agregar/Modificar Usuario</title>
+</head>
+<body>
+
+<ui:composition template="../template2.xhtml">
+
+	<ui:define name="content">
+		<f:view>
+			<center><h:panelGrid columns="3" border="0">
+				<rich:panel header="Modificar/Agregar Usuario" style="background-color: #ebf3fd;">
+					<h:form id="ModifucarUsuarioForm">
+						<h:panelGrid id="lpg" columns="3">		
+							<h:outputText  value="Nombre:  "></h:outputText>
+							<h:inputText id="nombre" value="#{usuarioBean.usuario.nombre}"></h:inputText><br/>
+							<h:commandButton id="cbtnGuardar" value="Guardar" action="#{usuarioBean.agregar}" />
+							<h:commandButton id="cbtnCancelar" value="Cancelar" action="#{usuarioBean.llenarTabla}" /><br/>
+						</h:panelGrid>	
+					</h:form>
+				</rich:panel>
+			</h:panelGrid></center>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</body>
+</html>

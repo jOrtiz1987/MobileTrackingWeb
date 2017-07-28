@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich">
+<head>
+<title>Mobile Tracking</title>
+</head>
+<body>
+<ui:composition template="./template2.xhtml">
+
+	<ui:define name="content">
+		<f:view>
+			<center><h:panelGrid width="300px" columns="2" border="0">
+				<rich:panel header="Login" style="background-color: #ebf3fd;">
+					<h:form id="LoginForm">
+						<h:outputText value="" />
+						<h:panelGrid id="lpg" columns="2">
+							<h:outputText value="Usuario"/>
+							<h:inputText id="intUser" value="#{loginBean.usuario}" required="true" />
+							<h:outputText value="" />
+							<rich:message id="msj" for="intUser" style="color:Red;font-size:small;font-family:Arial;" />
+							<h:outputLabel id="lblPsw" value="Contrasena" />
+							<h:inputSecret id="insPsw" value="#{loginBean.password}" required="true" />
+							<h:outputText value="" />
+							<rich:message id="msjP" for="insPsw" style="color:Red;font-size:small;font-family:Arial;" />
+							<h:outputText value="" />
+							<h:commandButton value="Login" action="#{loginBean.validarUsuario}" styleClass="submitButton" />
+						</h:panelGrid>
+					</h:form>
+				</rich:panel>
+			</h:panelGrid></center>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+	<!-- Beans -->
+	  
+	<!-- Manager Beans -->
+	
+	<managed-bean>
+		<managed-bean-name>loginBean</managed-bean-name>
+		<managed-bean-class>com.mx.uaz.mobileTracking.bean.LoginBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>edificioHistoricoBean</managed-bean-name>
+		<managed-bean-class>com.mx.uaz.mobileTracking.bean.EdificioHistoricoBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>edificioHistorico</property-name>
+			<property-class>com.mx.uaz.mobileTracking.model.EdificioHistorico</property-class>
+			<value>#{edificioHistorico}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>edificioHistoricoService</property-name>
+			<property-class>com.mx.uaz.mobileTracking.service.Impl.EdificioHistoricoServiceImpl</property-class>
+			<value>#{edificioHistoricoService}</value>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>usuarioBean</managed-bean-name>
+		<managed-bean-class>com.mx.uaz.mobileTracking.bean.UsuarioBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>usuario</property-name>
+			<property-class>com.mx.uaz.mobileTracking.model.Usuario</property-class>
+			<value>#{usuario}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>usuarioService</property-name>
+			<property-class>com.mx.uaz.mobileTracking.service.Impl.UsuarioServiceImpl</property-class>
+			<value>#{usuarioService}</value>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>mapaBean</managed-bean-name>
+		<managed-bean-class>com.mx.uaz.mobileTracking.bean.MapaBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- Reglas de Navegacion -->
+	<navigation-rule>
+		<display-name>index.xhtml</display-name>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>entrar</from-outcome>
+			<to-view-id>/pages/menu.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>menu.xhtml</display-name>
+		<from-view-id>/pages/menu.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>salir</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- Catalogos -->
+	
+	<navigation-rule>
+		<display-name>menu.xhtml</display-name>
+		<from-view-id>/pages/menu.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>edificios</from-outcome>
+			<to-view-id>/catalogos/edificiosHistoricos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>edificiosHistoricos.xhtml</display-name>
+		<from-view-id>/catalogos/edificiosHistoricos.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>agregar</from-outcome>
+			<to-view-id>/catalogos/AgregarEdificioHistorico.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>AgregarEdificioHistorico.xhtml</display-name>
+		<from-view-id>/catalogos/AgregarEdificioHistorico.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>edificios</from-outcome>
+			<to-view-id>/catalogos/edificiosHistoricos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>edificiosHistoricos.xhtml</display-name>
+		<from-view-id>/catalogos/edificiosHistoricos.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>usuarios</from-outcome>
+			<to-view-id>/catalogos/usuarios.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>edificiosHistoricos.xhtml</display-name>
+		<from-view-id>/catalogos/edificiosHistoricos.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>mapa</from-outcome>
+			<to-view-id>/mapa/mapa.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>menu.xhtml</display-name>
+		<from-view-id>/pages/menu.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>usuarios</from-outcome>
+			<to-view-id>/catalogos/usuarios.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>usuarios.xhtml</display-name>
+		<from-view-id>/catalogos/usuarios.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>agregar</from-outcome>
+			<to-view-id>/catalogos/AgregarUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>AgregarUsuario.xhtml</display-name>
+		<from-view-id>/catalogos/AgregarUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>usuarios</from-outcome>
+			<to-view-id>/catalogos/usuarios.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>usuarios.xhtml</display-name>
+		<from-view-id>/catalogos/usuarios.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>edificios</from-outcome>
+			<to-view-id>/catalogos/edificiosHistoricos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>usuarios.xhtml</display-name>
+		<from-view-id>/catalogos/usuarios.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>mapa</from-outcome>
+			<to-view-id>/mapa/mapa.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>menu.xhtml</display-name>
+		<from-view-id>/pages/menu.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>mapa</from-outcome>
+			<to-view-id>/mapa/mapa.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>mapa.xhtml</display-name>
+		<from-view-id>/mapa/mapa.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>edificios</from-outcome>
+			<to-view-id>/catalogos/edificiosHistoricos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>mapa.xhtml</display-name>
+		<from-view-id>/mapa/mapa.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>usuarios</from-outcome>
+			<to-view-id>/catalogos/usuarios.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Contextos Sping, Facelest -->
+	<application>
+		<variable-resolver>
+			org.springframework.web.jsf.DelegatingVariableResolver
+		</variable-resolver>
+		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+	</application>
+
+</faces-config>
