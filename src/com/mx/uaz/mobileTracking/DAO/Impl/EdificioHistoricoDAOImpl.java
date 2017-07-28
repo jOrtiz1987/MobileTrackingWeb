@@ -35,6 +35,7 @@ public class EdificioHistoricoDAOImpl extends HibernateDaoSupport implements Edi
 	@Override
 	public List<EdificioHistorico> buscar(EdificioHistorico edificioHistorico) {
 		try {
+			System.out.println("buscando en el DAO");
 			return getHibernateTemplate().findByExample(edificioHistorico);
 		} catch (HibernateException he) {
 			he.printStackTrace();

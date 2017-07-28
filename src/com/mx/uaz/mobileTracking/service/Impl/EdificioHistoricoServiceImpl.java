@@ -27,6 +27,7 @@ public class EdificioHistoricoServiceImpl implements EdificioHistoricoService {
 
 	@Override
 	public List<EdificioHistorico> buscar(EdificioHistorico edificioHistorico) {
+		System.out.println("buscando en el Service");
 		return edificioHistoricoDAO.buscar(edificioHistorico);
 	}
 

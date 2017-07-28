@@ -25,24 +25,24 @@ public class EdificioHistorico implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int idEdificioHistorico;
+	private Integer idEdificioHistorico;
 	private String descripcion;
-	private double latitud;
-	private double longitud;
+	private Double latitud;
+	private Double longitud;
 	private Set<PreferenciaUsuario> preferenciaUsuarios = new HashSet<PreferenciaUsuario>(0);
 	private Set<Visita> visitas = new HashSet<Visita>(0);
 
 	public EdificioHistorico() {
 	}
 
-	public EdificioHistorico(int idEdificioHistorico, String descripcion, double latitud, double longitud) {
+	public EdificioHistorico(Integer idEdificioHistorico, String descripcion, Double latitud, Double longitud) {
 		this.idEdificioHistorico = idEdificioHistorico;
 		this.descripcion = descripcion;
 		this.latitud = latitud;
 		this.longitud = longitud;
 	}
 
-	public EdificioHistorico(int idEdificioHistorico, String descripcion, double latitud, double longitud,
+	public EdificioHistorico(Integer idEdificioHistorico, String descripcion, Double latitud, Double longitud,
 			Set<PreferenciaUsuario> preferenciaUsuarios, Set<Visita> visitas) {
 		this.idEdificioHistorico = idEdificioHistorico;
 		this.descripcion = descripcion;
@@ -55,11 +55,11 @@ public class EdificioHistorico implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idEdificioHistorico", unique = true, nullable = false)
-	public int getIdEdificioHistorico() {
+	public Integer getIdEdificioHistorico() {
 		return this.idEdificioHistorico;
 	}
 
-	public void setIdEdificioHistorico(int idEdificioHistorico) {
+	public void setIdEdificioHistorico(Integer idEdificioHistorico) {
 		this.idEdificioHistorico = idEdificioHistorico;
 	}
 
@@ -73,20 +73,20 @@ public class EdificioHistorico implements java.io.Serializable {
 	}
 
 	@Column(name = "latitud", nullable = false)
-	public double getLatitud() {
+	public Double getLatitud() {
 		return this.latitud;
 	}
 
-	public void setLatitud(double latitud) {
+	public void setLatitud(Double latitud) {
 		this.latitud = latitud;
 	}
 
 	@Column(name = "longitud", nullable = false)
-	public double getLongitud() {
+	public Double getLongitud() {
 		return this.longitud;
 	}
 
-	public void setLongitud(double longitud) {
+	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
 

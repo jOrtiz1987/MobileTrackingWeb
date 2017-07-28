@@ -56,8 +56,14 @@ public class EdificioHistoricoBean implements Serializable{
 
 	public String llenarTabla(){
 		try{
+			System.out.println("Llenar tabla");
 			edificioHistorico = new EdificioHistorico();
-			edificiosHistoricos = edificioHistoricoService.buscar(edificioHistorico);
+			//edificioHistorico.setDescripcion("Bufa");
+			//edificioHistorico.setLatitud(1.2345);
+			//edificioHistorico.setLongitud(2.3456);
+			System.out.println("Edificio Historico = " + edificioHistorico.getIdEdificioHistorico() + "-" + edificioHistorico.getDescripcion() + "-" + edificioHistorico.getLatitud() + "-" + edificioHistorico.getLongitud());
+			edificiosHistoricos = edificioHistoricoService.buscar(edificioHistorico); 
+			System.out.println("tamaño " + edificiosHistoricos.size());
 		}
 		catch(Exception exception){
 			exception.printStackTrace();

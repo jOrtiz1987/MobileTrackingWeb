@@ -25,7 +25,7 @@ public class Usuario implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int idUsuario;
+	private Integer idUsuario;
 	private String nombre;
 	private String telefono;
 	private Set<RegistroCoordendas> registroCoordendases = new HashSet<RegistroCoordendas>(0);
@@ -35,13 +35,13 @@ public class Usuario implements java.io.Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(int idUsuario, String nombre, String telefono) {
+	public Usuario(Integer idUsuario, String nombre, String telefono) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.telefono = telefono;
 	}
 
-	public Usuario(int idUsuario, String nombre, String telefono, Set<RegistroCoordendas> registroCoordendases, Set<Visita> visitas,
+	public Usuario(Integer idUsuario, String nombre, String telefono, Set<RegistroCoordendas> registroCoordendases, Set<Visita> visitas,
 			Set<PreferenciaUsuario> preferenciaUsuarios) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
@@ -54,11 +54,11 @@ public class Usuario implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idUsuario", unique = true, nullable = false)
-	public int getIdUsuario() {
+	public Integer getIdUsuario() {
 		return this.idUsuario;
 	}
 
-	public void setIdUsuario(int idUsuario) {
+	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 

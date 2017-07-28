@@ -25,7 +25,7 @@ public class Visita implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int idVisita;
+	private Integer idVisita;
 	private EdificioHistorico edificioHistorico;
 	private Usuario usuario;
 	private Date fecha;
@@ -33,7 +33,7 @@ public class Visita implements java.io.Serializable {
 	public Visita() {
 	}
 
-	public Visita(int idVisita, EdificioHistorico edificioHistorico, Usuario usuario, Date fecha) {
+	public Visita(Integer idVisita, EdificioHistorico edificioHistorico, Usuario usuario, Date fecha) {
 		this.idVisita = idVisita;
 		this.edificioHistorico = edificioHistorico;
 		this.usuario = usuario;
@@ -43,11 +43,11 @@ public class Visita implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idVisita", unique = true, nullable = false)
-	public int getIdVisita() {
+	public Integer getIdVisita() {
 		return this.idVisita;
 	}
 
-	public void setIdVisita(int idVisita) {
+	public void setIdVisita(Integer idVisita) {
 		this.idVisita = idVisita;
 	}
 

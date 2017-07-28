@@ -25,16 +25,16 @@ public class RegistroCoordendas implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int idRegistroCoordendas;
+	private Integer idRegistroCoordendas;
 	private Usuario usuario;
-	private double latitud;
-	private double longitud;
+	private Double latitud;
+	private Double longitud;
 	private Date fecha;
 
 	public RegistroCoordendas() {
 	}
 
-	public RegistroCoordendas(int idRegistroCoordendas, Usuario usuario, double latitud, double longitud, Date fecha) {
+	public RegistroCoordendas(Integer idRegistroCoordendas, Usuario usuario, Double latitud, Double longitud, Date fecha) {
 		this.idRegistroCoordendas = idRegistroCoordendas;
 		this.usuario = usuario;
 		this.latitud = latitud;
@@ -45,11 +45,11 @@ public class RegistroCoordendas implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idRegistroCoordendas", unique = true, nullable = false)
-	public int getIdRegistroCoordendas() {
+	public Integer getIdRegistroCoordendas() {
 		return this.idRegistroCoordendas;
 	}
 
-	public void setIdRegistroCoordendas(int idRegistroCoordendas) {
+	public void setIdRegistroCoordendas(Integer idRegistroCoordendas) {
 		this.idRegistroCoordendas = idRegistroCoordendas;
 	}
 
@@ -64,20 +64,20 @@ public class RegistroCoordendas implements java.io.Serializable {
 	}
 
 	@Column(name = "latitud", nullable = false)
-	public double getLatitud() {
+	public Double getLatitud() {
 		return this.latitud;
 	}
 
-	public void setLatitud(double latitud) {
+	public void setLatitud(Double latitud) {
 		this.latitud = latitud;
 	}
 
 	@Column(name = "longitud", nullable = false)
-	public double getLongitud() {
+	public Double getLongitud() {
 		return this.longitud;
 	}
 
-	public void setLongitud(double longitud) {
+	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
 

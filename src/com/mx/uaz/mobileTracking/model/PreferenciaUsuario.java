@@ -23,16 +23,16 @@ public class PreferenciaUsuario implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int idPreferenciaUsuario;
+	private Integer idPreferenciaUsuario;
 	private Usuario usuario;
 	private EdificioHistorico edificioHistorico;
-	private boolean like;
+	private Boolean like;
 
 	public PreferenciaUsuario() {
 	}
 
-	public PreferenciaUsuario(int idPreferenciaUsuario, Usuario usuario, EdificioHistorico edificioHistorico,
-			boolean like) {
+	public PreferenciaUsuario(Integer idPreferenciaUsuario, Usuario usuario, EdificioHistorico edificioHistorico,
+			Boolean like) {
 		this.idPreferenciaUsuario = idPreferenciaUsuario;
 		this.usuario = usuario;
 		this.edificioHistorico = edificioHistorico;
@@ -42,11 +42,11 @@ public class PreferenciaUsuario implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idPreferenciaUsuario", unique = true, nullable = false)
-	public int getIdPreferenciaUsuario() {
+	public Integer getIdPreferenciaUsuario() {
 		return this.idPreferenciaUsuario;
 	}
 
-	public void setIdPreferenciaUsuario(int idPreferenciaUsuario) {
+	public void setIdPreferenciaUsuario(Integer idPreferenciaUsuario) {
 		this.idPreferenciaUsuario = idPreferenciaUsuario;
 	}
 
@@ -71,11 +71,11 @@ public class PreferenciaUsuario implements java.io.Serializable {
 	}
 
 	@Column(name = "like", nullable = false)
-	public boolean isLike() {
+	public Boolean isLike() {
 		return this.like;
 	}
 
-	public void setLike(boolean like) {
+	public void setLike(Boolean like) {
 		this.like = like;
 	}
 
