@@ -43,6 +43,12 @@
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">
+								<h:outputText value="Contenido" />
+							</f:facet>
+							<h:outputText value="#{edificioLista.contenido}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
 								<h:outputText value="Coordenadas" />
 							</f:facet>
 							<h:outputText value="#{edificioLista.latitud} - #{edificioLista.longitud}" />
@@ -69,7 +75,6 @@
 						</rich:column>
 					</rich:dataTable>
 					<h:commandButton id="cbtnAgregar" value="Agregar" action="#{edificioHistoricoBean.inicioAgregar}" />
-					<h:commandButton id="cbtnBuscar" value="Buscar" action="#{edificioHistoricoBean.buscar}" />
 					</h:form>
 				</rich:panel>
 			</center>

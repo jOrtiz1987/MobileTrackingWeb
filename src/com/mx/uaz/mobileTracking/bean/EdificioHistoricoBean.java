@@ -1,8 +1,13 @@
 package com.mx.uaz.mobileTracking.bean;
 
 import java.io.Serializable;
+import java.nio.file.Files;
 import java.util.List;
 import javax.faces.context.FacesContext;
+
+import org.richfaces.event.UploadEvent;
+import org.richfaces.model.UploadItem;
+
 import com.mx.uaz.mobileTracking.model.EdificioHistorico;
 import com.mx.uaz.mobileTracking.service.EdificioHistoricoService;
 
@@ -23,6 +28,13 @@ public class EdificioHistoricoBean implements Serializable{
 	public void finalize() throws Throwable {
 	}
 	
+	public void fileListener(UploadEvent event) throws Exception{
+		System.out.println("Vamos a cargar el archivos");
+		UploadItem item = event.getUploadItem();
+		byte[] data = Files.readAllBytes(item.getFile().toPath());
+		edificioHistorico.setImagen(data);
+	}
+	
 	public String agregar(){
 		try{
 			edificioHistoricoService.insertarModificar(edificioHistorico);
@@ -31,16 +43,6 @@ public class EdificioHistoricoBean implements Serializable{
 			exception.printStackTrace();
 		}
 		return llenarTabla();
-	}
-
-	public String buscar(){
-		try{
-			edificiosHistoricos = edificioHistoricoService.buscar(edificioHistorico);
-		}
-		catch(Exception exception){
-			exception.printStackTrace();
-		}
-		return "";
 	}
 
 	public String imprimir(){
@@ -101,7 +103,5 @@ public class EdificioHistoricoBean implements Serializable{
 	public void setEdificiosHistoricos(List<EdificioHistorico> edificiosHistoricos) {
 		this.edificiosHistoricos = edificiosHistoricos;
 	}
-	
-	
 	
 }

@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,6 +30,8 @@ public class EdificioHistorico implements java.io.Serializable {
 	private String descripcion;
 	private Double latitud;
 	private Double longitud;
+	private String contenido;
+	private byte[] imagen;
 	private Set<PreferenciaUsuario> preferenciaUsuarios = new HashSet<PreferenciaUsuario>(0);
 	private Set<Visita> visitas = new HashSet<Visita>(0);
 
@@ -63,6 +66,15 @@ public class EdificioHistorico implements java.io.Serializable {
 		this.idEdificioHistorico = idEdificioHistorico;
 	}
 
+	public String getContenido(){
+		return this.contenido;
+	}
+	
+	@Column(name = "contenido", nullable = false, length = 300)
+	public void setContenido(String contenido){
+		this.contenido = contenido;
+	}
+	
 	public String getDescripcion() {
 		return this.descripcion;
 	}
@@ -108,4 +120,16 @@ public class EdificioHistorico implements java.io.Serializable {
 		this.visitas = visitas;
 	}
 
+	@Lob
+	@Column(name = "imagen", nullable = false)
+	public byte[] getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(byte[] imagen) {
+		this.imagen = imagen;
+	}
+
+	
+	
 }

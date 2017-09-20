@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="288,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="entrar::#pages#menu.xhtml" NAME="output"
+    PATH="/pages/menu.xhtml" TARGET="rules:#pages#menu.xhtml"
+    TITLE="entrar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#menu.xhtml" PATH="/pages/menu.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#menu.xhtml:0" NAME="item"
+   PATH="/pages/menu.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#menu.xhtml:1" NAME="item1"
+   PATH="/pages/menu.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="edificios::#catalogos#edificiosHistoricos.xhtml" NAME="output"
+    PATH="/catalogos/edificiosHistoricos.xhtml"
+    TARGET="rules:#catalogos#edificiosHistoricos.xhtml"
+    TITLE="edificios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#menu.xhtml:2" NAME="item2"
+   PATH="/pages/menu.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="usuarios::#catalogos#usuarios.xhtml"
+    NAME="output" PATH="/catalogos/usuarios.xhtml"
+    TARGET="rules:#catalogos#usuarios.xhtml" TITLE="usuarios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#menu.xhtml:3" NAME="item3"
+   PATH="/pages/menu.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="mapa::#mapa#mapa.xhtml" NAME="output"
+    PATH="/mapa/mapa.xhtml" TARGET="rules:#mapa#mapa.xhtml" TITLE="mapa" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#catalogos#edificiosHistoricos.xhtml"
+  PATH="/catalogos/edificiosHistoricos.xhtml" SHAPE="288,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#catalogos#edificiosHistoricos.xhtml:0"
+   NAME="item" PATH="/catalogos/edificiosHistoricos.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="edificios::#catalogos#edificiosHistoricos.xhtml" NAME="output"
+    PATH="/catalogos/edificiosHistoricos.xhtml"
+    TARGET="rules:#catalogos#edificiosHistoricos.xhtml"
+    TITLE="edificios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#catalogos#edificiosHistoricos.xhtml:1"
+   NAME="item1" PATH="/catalogos/edificiosHistoricos.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="agregar::#catalogos#AgregarEdificioHistorico.xhtml"
+    NAME="output" PATH="/catalogos/AgregarEdificioHistorico.xhtml"
+    TARGET="rules:#catalogos#AgregarEdificioHistorico.xhtml"
+    TITLE="agregar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#catalogos#edificiosHistoricos.xhtml:2"
+   NAME="item2" PATH="/catalogos/edificiosHistoricos.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="usuarios::#catalogos#usuarios.xhtml"
+    NAME="output" PATH="/catalogos/usuarios.xhtml"
+    TARGET="rules:#catalogos#usuarios.xhtml" TITLE="usuarios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#catalogos#edificiosHistoricos.xhtml:3"
+   NAME="item3" PATH="/catalogos/edificiosHistoricos.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="mapa::#mapa#mapa.xhtml" NAME="output"
+    PATH="/mapa/mapa.xhtml" TARGET="rules:#mapa#mapa.xhtml" TITLE="mapa" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#catalogos#AgregarEdificioHistorico.xhtml"
+  PATH="/catalogos/AgregarEdificioHistorico.xhtml" SHAPE="32,225,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#catalogos#AgregarEdificioHistorico.xhtml:0"
+   NAME="item" PATH="/catalogos/AgregarEdificioHistorico.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="edificios::#catalogos#edificiosHistoricos.xhtml" NAME="output"
+    PATH="/catalogos/edificiosHistoricos.xhtml"
+    TARGET="rules:#catalogos#edificiosHistoricos.xhtml"
+    TITLE="edificios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#catalogos#usuarios.xhtml"
+  PATH="/catalogos/usuarios.xhtml" SHAPE="544,225,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#catalogos#usuarios.xhtml:0" NAME="item"
+   PATH="/catalogos/usuarios.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="agregar::#catalogos#AgregarUsuario.xhtml"
+    NAME="output" PATH="/catalogos/AgregarUsuario.xhtml"
+    TARGET="rules:#catalogos#AgregarUsuario.xhtml" TITLE="agregar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#catalogos#usuarios.xhtml:1" NAME="item1"
+   PATH="/catalogos/usuarios.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="edificios::#catalogos#edificiosHistoricos.xhtml" NAME="output"
+    PATH="/catalogos/edificiosHistoricos.xhtml"
+    TARGET="rules:#catalogos#edificiosHistoricos.xhtml"
+    TITLE="edificios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#catalogos#usuarios.xhtml:2" NAME="item2"
+   PATH="/catalogos/usuarios.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="mapa::#mapa#mapa.xhtml" NAME="output"
+    PATH="/mapa/mapa.xhtml" TARGET="rules:#mapa#mapa.xhtml" TITLE="mapa" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#catalogos#AgregarUsuario.xhtml"
+  PATH="/catalogos/AgregarUsuario.xhtml" SHAPE="288,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#catalogos#AgregarUsuario.xhtml:0" NAME="item"
+   PATH="/catalogos/AgregarUsuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="usuarios::#catalogos#usuarios.xhtml"
+    NAME="output" PATH="/catalogos/usuarios.xhtml"
+    TARGET="rules:#catalogos#usuarios.xhtml" TITLE="usuarios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#mapa#mapa.xhtml" PATH="/mapa/mapa.xhtml"
+  SHAPE="784,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#mapa#mapa.xhtml:0" NAME="item"
+   PATH="/mapa/mapa.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="edificios::#catalogos#edificiosHistoricos.xhtml" NAME="output"
+    PATH="/catalogos/edificiosHistoricos.xhtml"
+    TARGET="rules:#catalogos#edificiosHistoricos.xhtml"
+    TITLE="edificios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#mapa#mapa.xhtml:1" NAME="item1"
+   PATH="/mapa/mapa.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="usuarios::#catalogos#usuarios.xhtml"
+    NAME="output" PATH="/catalogos/usuarios.xhtml"
+    TARGET="rules:#catalogos#usuarios.xhtml" TITLE="usuarios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

@@ -25,6 +25,13 @@
 							<h:inputText id="latitud" value="#{edificioHistoricoBean.edificioHistorico.latitud}"></h:inputText><br/>
 							<h:outputText  value="Longitud  "></h:outputText>
 							<h:inputText id="longitud" value="#{edificioHistoricoBean.edificioHistorico.longitud}"></h:inputText><br/>
+							<h:outputText  value="Contenido "></h:outputText>
+							<h:inputTextarea id="contenido" value="#{edificioHistoricoBean.edificioHistorico.contenido}"></h:inputTextarea><br/>
+							<h:outputText  value="Imagen "></h:outputText>
+							
+							<rich:fileUpload addControlLabel="Add file..." clearAllControlLabel="Clear all" clearControlLabel="Clear"
+								stopEntryControlLabel="Stop process" uploadControlLabel="Upload file" fileUploadListener="#{edificioHistoricoBean.fileListener}"/><br/>
+							
 							<h:commandButton id="cbtnGuardar" value="Guardar" action="#{edificioHistoricoBean.agregar}" />
 							<h:commandButton id="cbtnCancelar" value="Cancelar" action="#{edificioHistoricoBean.llenarTabla}" /><br/>
 						</h:panelGrid>	
