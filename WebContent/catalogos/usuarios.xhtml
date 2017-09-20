@@ -14,16 +14,6 @@
 				<rich:panel id="pnusuarios" style="height:300px;width: 600px;">
 					<h:form>
 					<h:outputText value="" />
-					<h:panelGrid id="lpg" columns="2">
-						<h:outputText value="No. Usuario: " />
-						<h:inputText id="numeroUsuario" value="#{usuarioBean.usuario.idUsuario}"/>
-						<h:outputText id="lblNombre" value="Nombre: " />
-						<h:inputText id="inputNombre" value="#{usuarioBean.usuario.nombre}"/>
-						<h:outputText value="" />
-						<rich:message id="msjP" for="insPsw"
-							style="color:Red;font-size:small;font-family:Arial;" />
-						<h:outputText value="" />
-					</h:panelGrid>
 					<rich:dataTable value="#{usuarioBean.usuarios}" var="usuarioLista"
 						align="center">
 						<f:facet name="header">
@@ -37,33 +27,11 @@
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">
-								<h:outputText value="Nombre" />
+								<h:outputText value="Correo" />
 							</f:facet>
-							<h:outputText value="#{usuarioLista.nombre}" />
-						</rich:column>
-						<rich:column align="center">
-							<f:facet name="header">
-								<h:outputText value="Borrar" />
-							</f:facet>
-							<a4j:commandLink ajaxSingle="true" id="eliminarLink"
-								action="#{usuarioBean.borrar}">
-								<h:graphicImage value="../imagenes/borrar.png" style="border:0" width="20" height="20" />
-								<f:param id="idUsuario" name="idUsuario" value="#{usuarioLista.idUsuario}" />
-							</a4j:commandLink>
-							</rich:column>
-						<rich:column align="center">
-							<f:facet name="header" >
-								<h:outputText value="Modificar" />
-							</f:facet>
-							<a4j:commandLink ajaxSingle="true" id="modificarLink"
-								action="#{usuarioBean.modificar}">
-								<h:graphicImage value="../imagenes/modificar.png" style="border:0" width="20" height="20" aling="center"/>
-								<f:param id="idUsuarioM" name="idUsuarioM" value="#{usuarioLista.idUsuario}" />
-							</a4j:commandLink>
+							<h:outputText value="#{usuarioLista.correo}" />
 						</rich:column>
 					</rich:dataTable>
-					<h:commandButton id="cbtnAgregar" value="Agregar" action="#{usuarioBean.inicioAgregar}" />
-					<h:commandButton id="cbtnBuscar" value="Buscar" action="#{usuarioBean.buscar}" />
 					</h:form>
 				</rich:panel>
 			</center>

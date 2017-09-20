@@ -26,8 +26,8 @@ public class Usuario implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer idUsuario;
-	private String nombre;
-	private String telefono;
+	private String correo;
+	private String password;
 	private Set<RegistroCoordendas> registroCoordendases = new HashSet<RegistroCoordendas>(0);
 	private Set<Visita> visitas = new HashSet<Visita>(0);
 	private Set<PreferenciaUsuario> preferenciaUsuarios = new HashSet<PreferenciaUsuario>(0);
@@ -35,17 +35,17 @@ public class Usuario implements java.io.Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(Integer idUsuario, String nombre, String telefono) {
+	public Usuario(Integer idUsuario, String password, String correo) {
 		this.idUsuario = idUsuario;
-		this.nombre = nombre;
-		this.telefono = telefono;
+		this.password = password;
+		this.correo = correo;
 	}
 
-	public Usuario(Integer idUsuario, String nombre, String telefono, Set<RegistroCoordendas> registroCoordendases, Set<Visita> visitas,
+	public Usuario(Integer idUsuario, String password, String correo, Set<RegistroCoordendas> registroCoordendases, Set<Visita> visitas,
 			Set<PreferenciaUsuario> preferenciaUsuarios) {
 		this.idUsuario = idUsuario;
-		this.nombre = nombre;
-		this.telefono = telefono;
+		this.password = password;
+		this.correo = correo;
 		this.registroCoordendases = registroCoordendases;
 		this.visitas = visitas;
 		this.preferenciaUsuarios = preferenciaUsuarios;
@@ -62,22 +62,22 @@ public class Usuario implements java.io.Serializable {
 		this.idUsuario = idUsuario;
 	}
 
-	@Column(name = "nombre", nullable = false, length = 45)
-	public String getNombre() {
-		return this.nombre;
+	@Column(name = "correo", nullable = false, length = 45)
+	public String getCorreo() {
+		return this.correo;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 
-	@Column(name = "telefono", nullable = false, length = 10)
-	public String getTelefono() {
-		return this.telefono;
+	@Column(name = "password", nullable = false, length = 10)
+	public String getPassword() {
+		return this.password;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")

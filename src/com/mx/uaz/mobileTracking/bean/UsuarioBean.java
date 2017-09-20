@@ -2,7 +2,6 @@ package com.mx.uaz.mobileTracking.bean;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.faces.context.FacesContext;
 import com.mx.uaz.mobileTracking.model.Usuario;
 import com.mx.uaz.mobileTracking.service.UsuarioService;
 
@@ -23,7 +22,7 @@ public class UsuarioBean implements Serializable{
 	public void finalize() throws Throwable {
 	}
 	
-	public String agregar(){
+	/*public String agregar(){
 		try{
 			usuarioService.insertarModificar(usuario);
 		}
@@ -33,25 +32,15 @@ public class UsuarioBean implements Serializable{
 		return llenarTabla();
 	}
 
-	public String buscar(){
-		try{
-			usuarios = usuarioService.buscar(usuario);
-		}
-		catch(Exception exception){
-			exception.printStackTrace();
-		}
-		return "";
-	}
-
 	public String imprimir(){
 		return "";
-	}
+	}*/
 	
-	public String modificar(){
+	/*public String modificar(){
 		FacesContext fc = FacesContext.getCurrentInstance();
 		usuario = usuarioService.buscar(Integer.parseInt(fc.getExternalContext().getRequestParameterMap().get("idUsuarioM")));
 		return inicioAgregar();
-	}
+	}*/
 	
 
 	public String llenarTabla(){
@@ -65,15 +54,15 @@ public class UsuarioBean implements Serializable{
 		return "usuarios";
 	}
 	
-	public String borrar(){
+	/*public String borrar(){
 		FacesContext fc = FacesContext.getCurrentInstance();
 		usuarioService.eliminar(usuarioService.buscar(Integer.parseInt(fc.getExternalContext().getRequestParameterMap().get("idUsuario"))));
 		return llenarTabla();
-	}
+	}*/
 	
-	public String inicioAgregar(){
+	/*public String inicioAgregar(){
 		return "agregar";
-	}
+	}*/
 	
 	public void setUsuarioService(UsuarioService usuarioService) {
 		this.usuarioService = usuarioService;
