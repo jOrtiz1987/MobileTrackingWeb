@@ -65,6 +65,32 @@
 	</managed-bean>
 
 	<managed-bean>
+		<managed-bean-name>visitasBean</managed-bean-name>
+		<managed-bean-class>com.mx.uaz.mobileTracking.bean.VisitasBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>visita</property-name>
+			<property-class>com.mx.uaz.mobileTracking.model.Visita</property-class>
+			<value>#{visita}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>visitaService</property-name>
+			<property-class>com.mx.uaz.mobileTracking.service.Impl.VisitaServiceImpl</property-class>
+			<value>#{visitaService}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>edificioHistoricoService</property-name>
+			<property-class>com.mx.uaz.mobileTracking.service.Impl.EdificioHistoricoServiceImpl</property-class>
+			<value>#{edificioHistoricoService}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>usuarioService</property-name>
+			<property-class>com.mx.uaz.mobileTracking.service.Impl.UsuarioServiceImpl</property-class>
+			<value>#{usuarioService}</value>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
 		<managed-bean-name>mapaBean</managed-bean-name>
 		<managed-bean-class>com.mx.uaz.mobileTracking.bean.MapaBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
@@ -137,6 +163,14 @@
 			<to-view-id>/mapa/mapa.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>edificiosHistoricos.xhtml</display-name>
+		<from-view-id>/catalogos/edificiosHistoricos.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>visitas</from-outcome>
+			<to-view-id>/reportes/visita.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	
 	<navigation-rule>
 		<display-name>menu.xhtml</display-name>
@@ -178,6 +212,14 @@
 			<to-view-id>/mapa/mapa.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>usuarios.xhtml</display-name>
+		<from-view-id>/catalogos/usuarios.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>visitas</from-outcome>
+			<to-view-id>/reportes/visita.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	
 	<navigation-rule>
 		<display-name>menu.xhtml</display-name>
@@ -201,6 +243,55 @@
 		<navigation-case>
 			<from-outcome>usuarios</from-outcome>
 			<to-view-id>/catalogos/usuarios.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>mapa.xhtml</display-name>
+		<from-view-id>/mapa/mapa.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>visitas</from-outcome>
+			<to-view-id>/reportes/visita.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>menu.xhtml</display-name>
+		<from-view-id>/pages/menu.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>visitas</from-outcome>
+			<to-view-id>/reportes/visita.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>visita.xhtml</display-name>
+		<from-view-id>/reportes/visita.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>edificios</from-outcome>
+			<to-view-id>/catalogos/edificiosHistoricos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>visita.xhtml</display-name>
+		<from-view-id>/reportes/visita.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>usuarios</from-outcome>
+			<to-view-id>/catalogos/usuarios.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>visita.xhtml</display-name>
+		<from-view-id>/reportes/visita.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>mapa</from-outcome>
+			<to-view-id>/mapa/mapa.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>visita.xhtml</display-name>
+		<from-view-id>/reportes/visita.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>visitas</from-outcome>
+			<to-view-id>/reportes/visita.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	

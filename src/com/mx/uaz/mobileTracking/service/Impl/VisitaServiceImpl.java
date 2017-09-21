@@ -39,4 +39,9 @@ public class VisitaServiceImpl implements VisitaService {
 		this.visitaDAO = visitaDAO;
 	}
 
+	@Override
+	public List<Visita> buscarTodos(Visita visita) {
+		return visitaDAO.buscarTodos(visita);
+	}
+
 }

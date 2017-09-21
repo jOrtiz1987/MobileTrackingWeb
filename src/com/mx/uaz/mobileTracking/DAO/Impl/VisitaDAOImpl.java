@@ -7,6 +7,8 @@ import com.mx.uaz.mobileTracking.model.Visita;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.hibernate.HibernateException;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 
 public class VisitaDAOImpl extends HibernateDaoSupport implements VisitaDAO {
 
@@ -35,13 +37,31 @@ public class VisitaDAOImpl extends HibernateDaoSupport implements VisitaDAO {
 	@Override
 	public List<Visita> buscar(Visita visita) {
 		try {
-			return getHibernateTemplate().findByExample(visita);
+			DetachedCriteria criteria = DetachedCriteria.forClass(Visita.class);
+			if(visita.getEdificioHistorico() != null){
+				criteria.add(Restrictions.eq("edificioHistorico", visita.getEdificioHistorico()));
+			}
+			if(visita.getUsuario() != null){
+				criteria.add(Restrictions.eq("usuario", visita.getUsuario()));
+			}
+			return getHibernateTemplate().findByCriteria(criteria);
 		} catch (HibernateException he) {
 			he.printStackTrace();
 			return null;
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Visita> buscarTodos(Visita visita) {
+		try {
+			return getHibernateTemplate().findByExample(visita);
+		} catch (HibernateException he) {
+			he.printStackTrace();
+			return null;
+		}
+	}
+	
 	@Override
 	public boolean eliminar(Visita visita) {
 		try {

@@ -12,6 +12,8 @@ public interface VisitaDAO {
 	
 	public Visita buscar(Integer id);
 	
+	public List<Visita> buscarTodos(Visita visita);
+	
 	public List<Visita> buscar(Visita visita);
 	
 	public List<Visita> buscar(String consulta);

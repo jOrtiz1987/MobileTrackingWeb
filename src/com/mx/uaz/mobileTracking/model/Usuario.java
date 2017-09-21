@@ -3,15 +3,10 @@ package com.mx.uaz.mobileTracking.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -28,9 +23,6 @@ public class Usuario implements java.io.Serializable {
 	private Integer idUsuario;
 	private String correo;
 	private String password;
-	private Set<RegistroCoordendas> registroCoordendases = new HashSet<RegistroCoordendas>(0);
-	private Set<Visita> visitas = new HashSet<Visita>(0);
-	private Set<PreferenciaUsuario> preferenciaUsuarios = new HashSet<PreferenciaUsuario>(0);
 
 	public Usuario() {
 	}
@@ -39,16 +31,6 @@ public class Usuario implements java.io.Serializable {
 		this.idUsuario = idUsuario;
 		this.password = password;
 		this.correo = correo;
-	}
-
-	public Usuario(Integer idUsuario, String password, String correo, Set<RegistroCoordendas> registroCoordendases, Set<Visita> visitas,
-			Set<PreferenciaUsuario> preferenciaUsuarios) {
-		this.idUsuario = idUsuario;
-		this.password = password;
-		this.correo = correo;
-		this.registroCoordendases = registroCoordendases;
-		this.visitas = visitas;
-		this.preferenciaUsuarios = preferenciaUsuarios;
 	}
 
 	@Id
@@ -78,33 +60,6 @@ public class Usuario implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set<RegistroCoordendas> getRegistroCoordendases() {
-		return this.registroCoordendases;
-	}
-
-	public void setRegistroCoordendases(Set<RegistroCoordendas> registroCoordendases) {
-		this.registroCoordendases = registroCoordendases;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set<Visita> getVisitas() {
-		return this.visitas;
-	}
-
-	public void setVisitas(Set<Visita> visitas) {
-		this.visitas = visitas;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set<PreferenciaUsuario> getPreferenciaUsuarios() {
-		return this.preferenciaUsuarios;
-	}
-
-	public void setPreferenciaUsuarios(Set<PreferenciaUsuario> preferenciaUsuarios) {
-		this.preferenciaUsuarios = preferenciaUsuarios;
 	}
 
 }

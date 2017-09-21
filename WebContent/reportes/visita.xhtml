@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+	
+<ui:composition template="../template.xhtml">
+
+	<ui:define name="content">
+		<f:view>
+			<center>
+				<rich:panel id="pnvisitas" style="height:300px;width: 600px;">
+					<h:form>
+					<h:outputText value="" />
+					<h:panelGrid id="lpg" columns="2">
+						<h:outputText value="Usuario: " />
+						<h:selectOneMenu value="#{visitasBean.idUsuario}"> 
+							<f:selectItem itemValue="0" itemLabel="Selecciona un Usuario"/>
+			            	<f:selectItems value="#{visitasBean.listUsuarios}" var="usuario" itemValue="#{usuario.value}" itemLabel="#{usuario.label}" />
+						</h:selectOneMenu>
+						<h:outputText value="Edificio Historico: " />
+						<h:selectOneMenu value="#{visitasBean.idEdificioHistorico}"> 
+							<f:selectItem itemValue="0" itemLabel="Selecciona un Edificio Historico"/>
+			            	<f:selectItems value="#{visitasBean.listEdificiosHistoricos}" var="edificio" itemValue="#{edificio.value}" itemLabel="#{edificio.label}" />
+						</h:selectOneMenu>
+					</h:panelGrid>
+					<rich:dataTable id="visitaTable" value="#{visitasBean.visitas}" var="visitaLista"
+						align="center">
+						<f:facet name="header">
+							<h:outputText value="Lista Edificios Historicos" />
+						</f:facet>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Usuario" />
+							</f:facet>
+							<h:outputText value="#{visitaLista.usuario.correo}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Edificio Historico " />
+							</f:facet>
+							<h:outputText value="#{visitaLista.edificioHistorico.descripcion}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Fecha " />
+							</f:facet>
+							<h:outputText value="#{visitaLista.fecha}" />
+						</rich:column>
+					</rich:dataTable>
+					<h:commandButton id="cbtnBuscar" value="Buscar" action="#{visitasBean.buscar}" update="visitaTable" />
+					</h:form>
+				</rich:panel>
+			</center>
+		</f:view>
+	</ui:define>
+</ui:composition>
+
+</html>

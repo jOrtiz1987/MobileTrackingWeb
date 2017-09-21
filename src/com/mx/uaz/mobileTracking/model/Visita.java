@@ -52,7 +52,7 @@ public class Visita implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "edificioHistorico", nullable = false)
+	@JoinColumn(name = "idEdificioHistorico", nullable = false)
 	public EdificioHistorico getEdificioHistorico() {
 		return this.edificioHistorico;
 	}
@@ -62,7 +62,7 @@ public class Visita implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "usuario", nullable = false)
+	@JoinColumn(name = "idUsuario", nullable = false)
 	public Usuario getUsuario() {
 		return this.usuario;
 	}

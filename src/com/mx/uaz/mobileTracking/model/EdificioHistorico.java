@@ -3,16 +3,11 @@ package com.mx.uaz.mobileTracking.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -32,8 +27,6 @@ public class EdificioHistorico implements java.io.Serializable {
 	private Double longitud;
 	private String contenido;
 	private byte[] imagen;
-	private Set<PreferenciaUsuario> preferenciaUsuarios = new HashSet<PreferenciaUsuario>(0);
-	private Set<Visita> visitas = new HashSet<Visita>(0);
 
 	public EdificioHistorico() {
 	}
@@ -43,16 +36,6 @@ public class EdificioHistorico implements java.io.Serializable {
 		this.descripcion = descripcion;
 		this.latitud = latitud;
 		this.longitud = longitud;
-	}
-
-	public EdificioHistorico(Integer idEdificioHistorico, String descripcion, Double latitud, Double longitud,
-			Set<PreferenciaUsuario> preferenciaUsuarios, Set<Visita> visitas) {
-		this.idEdificioHistorico = idEdificioHistorico;
-		this.descripcion = descripcion;
-		this.latitud = latitud;
-		this.longitud = longitud;
-		this.preferenciaUsuarios = preferenciaUsuarios;
-		this.visitas = visitas;
 	}
 
 	@Id
@@ -100,24 +83,6 @@ public class EdificioHistorico implements java.io.Serializable {
 
 	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "edificioHistorico")
-	public Set<PreferenciaUsuario> getPreferenciaUsuarios() {
-		return this.preferenciaUsuarios;
-	}
-
-	public void setPreferenciaUsuarios(Set<PreferenciaUsuario> preferenciaUsuarios) {
-		this.preferenciaUsuarios = preferenciaUsuarios;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "edificioHistorico")
-	public Set<Visita> getVisitas() {
-		return this.visitas;
-	}
-
-	public void setVisitas(Set<Visita> visitas) {
-		this.visitas = visitas;
 	}
 
 	@Lob
