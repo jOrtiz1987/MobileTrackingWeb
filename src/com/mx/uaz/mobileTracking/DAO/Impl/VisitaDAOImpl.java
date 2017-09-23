@@ -1,5 +1,8 @@
 package com.mx.uaz.mobileTracking.DAO.Impl;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import com.mx.uaz.mobileTracking.DAO.VisitaDAO;
@@ -33,7 +36,7 @@ public class VisitaDAOImpl extends HibernateDaoSupport implements VisitaDAO {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public List<Visita> buscar(Visita visita) {
 		try {
@@ -43,6 +46,20 @@ public class VisitaDAOImpl extends HibernateDaoSupport implements VisitaDAO {
 			}
 			if(visita.getUsuario() != null){
 				criteria.add(Restrictions.eq("usuario", visita.getUsuario()));
+			}
+			if(visita.getFecha() != null){
+				//System.out.println("Fecha antes de convertir = " + visita.getFecha());
+				Calendar calendarioInicio = Calendar.getInstance();
+				calendarioInicio.setTime(visita.getFecha());
+				Calendar calendarioFin = Calendar.getInstance();
+				Date fechafin = visita.getFecha();
+				fechafin.setHours(23);
+				fechafin.setMinutes(59);
+				fechafin.setSeconds(59);
+				calendarioFin.setTime(fechafin);
+				//System.out.println("Fecha " + calendarioInicio.getTime() + " - " + calendarioFin.getTime());
+				criteria.add(Restrictions.gt("fecha", calendarioInicio.getTime()));
+				criteria.add(Restrictions.lt("fecha", calendarioFin.getTime()));
 			}
 			return getHibernateTemplate().findByCriteria(criteria);
 		} catch (HibernateException he) {

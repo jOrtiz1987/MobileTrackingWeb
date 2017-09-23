@@ -41,6 +41,12 @@
     NAME="output" PATH="/reportes/visita.xhtml"
     TARGET="rules:#reportes#visita.xhtml" TITLE="visitas" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#menu.xhtml:5" NAME="item5"
+   PATH="/pages/menu.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="trayectorias::#reportes#trayectoria.xhtml"
+    NAME="output" PATH="/reportes/trayectoria.xhtml"
+    TARGET="rules:#reportes#trayectoria.xhtml" TITLE="trayectorias" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#catalogos#edificiosHistoricos.xhtml"
   PATH="/catalogos/edificiosHistoricos.xhtml" SHAPE="288,241,0,0" model-entity="JSFProcessGroup">
@@ -76,6 +82,12 @@
    <PROCESS-ITEM-OUTPUT ID="visitas::#reportes#visita.xhtml"
     NAME="output" PATH="/reportes/visita.xhtml"
     TARGET="rules:#reportes#visita.xhtml" TITLE="visitas" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#catalogos#edificiosHistoricos.xhtml:5"
+   NAME="item5" PATH="/catalogos/edificiosHistoricos.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="trayectorias::#reportes#trayectoria.xhtml"
+    NAME="output" PATH="/reportes/trayectoria.xhtml"
+    TARGET="rules:#reportes#trayectoria.xhtml" TITLE="trayectorias" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#catalogos#AgregarEdificioHistorico.xhtml"
@@ -115,6 +127,12 @@
    <PROCESS-ITEM-OUTPUT ID="visitas::#reportes#visita.xhtml"
     NAME="output" PATH="/reportes/visita.xhtml"
     TARGET="rules:#reportes#visita.xhtml" TITLE="visitas" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#catalogos#usuarios.xhtml:4" NAME="item4"
+   PATH="/catalogos/usuarios.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="trayectorias::#reportes#trayectoria.xhtml"
+    NAME="output" PATH="/reportes/trayectoria.xhtml"
+    TARGET="rules:#reportes#trayectoria.xhtml" TITLE="trayectorias" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#catalogos#AgregarUsuario.xhtml"
@@ -175,6 +193,46 @@
    <PROCESS-ITEM-OUTPUT ID="visitas::#reportes#visita.xhtml"
     NAME="output" PATH="/reportes/visita.xhtml"
     TARGET="rules:#reportes#visita.xhtml" TITLE="visitas" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#reportes#visita.xhtml:4" NAME="item4"
+   PATH="/reportes/visita.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="trayectorias::#reportes#trayectoria.xhtml"
+    NAME="output" PATH="/reportes/trayectoria.xhtml"
+    TARGET="rules:#reportes#trayectoria.xhtml" TITLE="trayectorias" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reportes#trayectoria.xhtml"
+  PATH="/reportes/trayectoria.xhtml" SHAPE="576,641,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reportes#trayectoria.xhtml:0" NAME="item"
+   PATH="/reportes/trayectoria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="edificios::#catalogos#edificiosHistoricos.xhtml" NAME="output"
+    PATH="/catalogos/edificiosHistoricos.xhtml"
+    TARGET="rules:#catalogos#edificiosHistoricos.xhtml"
+    TITLE="edificios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#reportes#trayectoria.xhtml:1" NAME="item1"
+   PATH="/reportes/trayectoria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="usuarios::#catalogos#usuarios.xhtml"
+    NAME="output" PATH="/catalogos/usuarios.xhtml"
+    TARGET="rules:#catalogos#usuarios.xhtml" TITLE="usuarios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#reportes#trayectoria.xhtml:2" NAME="item2"
+   PATH="/reportes/trayectoria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="mapa::#mapa#mapa.xhtml" NAME="output"
+    PATH="/mapa/mapa.xhtml" TARGET="rules:#mapa#mapa.xhtml" TITLE="mapa" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#reportes#trayectoria.xhtml:3" NAME="item3"
+   PATH="/reportes/trayectoria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="visitas::#reportes#visita.xhtml"
+    NAME="output" PATH="/reportes/visita.xhtml"
+    TARGET="rules:#reportes#visita.xhtml" TITLE="visitas" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#reportes#trayectoria.xhtml:4" NAME="item4"
+   PATH="/reportes/trayectoria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="trayectorias::#reportes#trayectoria.xhtml"
+    NAME="output" PATH="/reportes/trayectoria.xhtml"
+    TARGET="rules:#reportes#trayectoria.xhtml" TITLE="trayectorias" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>
