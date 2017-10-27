@@ -120,6 +120,16 @@
 		<managed-bean-name>mapaBean</managed-bean-name>
 		<managed-bean-class>com.mx.uaz.mobileTracking.bean.MapaBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>edificioHistorico</property-name>
+			<property-class>com.mx.uaz.mobileTracking.model.EdificioHistorico</property-class>
+			<value>#{edificioHistorico}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>edificioHistoricoService</property-name>
+			<property-class>com.mx.uaz.mobileTracking.service.Impl.EdificioHistoricoServiceImpl</property-class>
+			<value>#{edificioHistoricoService}</value>
+		</managed-property>
 	</managed-bean>
 
 	<!-- Reglas de Navegacion -->

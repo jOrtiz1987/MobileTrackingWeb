@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -6,36 +7,104 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j">
 	
-	<ui:composition template="../template.xhtml">
-	
-		<script>
-	      function initMap() {
-	        var myLatLng = {lat: 22.774534, lng: -102.574164};
-	
-	        var map = new google.maps.Map(document.getElementById('map'), {
-	          zoom: 4,
-	          center: myLatLng
-	        });
-	
-	        var marker = new google.maps.Marker({
-	          position: myLatLng,
-	          map: map,
-	          title: 'Centro Zacatecas!'
-	        });
-	      }
-	    </script>
-	
-	    <style>
-	        .optionList {
-	          height:30px;
-	        }
-	    </style>    
-	    <ui:define name="content">
-			<h:panelGrid columns="2">
-				<rich:gmap  gmapVar="map" zoom="16" style="width:1300px;height:550px" gmapKey="#{mapaBean.mapKey}" id="gmap" 
-					mapType="G_NORMAL_MAP" lat="22.774534" lng="-102.574164" onclick="initMap"/>
-			</h:panelGrid>  
-		</ui:define>
-	</ui:composition>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8"/>
+    <link href="./css/default.css" rel="stylesheet" type="text/css" />
+	<link href="./css/cssLayout.css" rel="stylesheet" type="text/css" />
+    <title>Mobile Tracking</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgsBvMxxNkpkY2iNjyd-gn8Xqd1vRlDr0"></script>
+    <script>
+      // In the following example, markers appear when the user clicks on the map.
+      // Each marker is labeled with a single alphabetical character.
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
+
+      function initialize() {
+        
+        var bangalore = { lat: 22.773290, lng: -102.575219 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: bangalore
+        });
+
+        // This event listener calls addMarker() when the map is clicked.
+        /*google.maps.event.addListener(map, 'click', function(event) {
+          addMarker(event.latLng, map);
+        });*/
+
+        // Add a marker at the center of the map.
+        addMarker(bangalore, map);
+      }
+
+      // Adds a marker to the map.
+      function addMarker(location, map) {
+        // Add the marker at the clicked location, and add the next-available label
+        // from the array of alphabetical characters.
+        var marker = new google.maps.Marker({
+          position: location,
+          label: labels[labelIndex++ % labels.length],
+          map: map
+        });
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+  
+  	<div id="top_menu"><f:view>
+		<h:form>
+			<rich:toolBar>
+				<rich:dropDownMenu>
+					<f:facet name="label">
+						<h:outputText value="Catálogos" />
+					</f:facet>
+					<rich:menuItem icon="/imagenes/auxiliar.png" value="Edificios Historicos"
+						action="#{edificioHistoricoBean.llenarTabla}" />
+					<rich:menuItem icon="/imagenes/bancaria.png" value="Usuarios"
+						action="#{usuarioBean.llenarTabla}" />
+				</rich:dropDownMenu>
+				<rich:dropDownMenu>
+					<f:facet name="label">
+						<h:outputText value="Reportes" />
+					</f:facet>
+					<rich:menuItem icon="/imagenes/auxiliar.png" value="Visitas a Edificios Historicos"
+						action="#{visitasBean.llenarTabla}" />
+					<rich:menuItem icon="/imagenes/bancaria.png" value="Trayectorias de Usuarios"
+						action="#{trayectoriasBean.llenarTabla}" />
+				</rich:dropDownMenu>
+				<rich:dropDownMenu>
+					<f:facet name="label">
+						<h:outputText value="Usuarios Activos" />
+					</f:facet>
+					<rich:menuItem icon="/imagenes/auxiliar.png" value="Mapa de Usuarios Activos"
+						action="#{mapaBean.llenarTabla}" />
+				</rich:dropDownMenu>
+				<rich:dropDownMenu>
+					<f:facet name="label">
+						<h:outputText value="Salir" />
+					</f:facet>
+					<rich:menuItem icon="/imagenes/Salir.png" value="Salir" action="#{loginBean.salir}" />
+				</rich:dropDownMenu>
+			</rich:toolBar>
+		</h:form>
+	</f:view></div>
+  
+    <div id="map"></div>
+  </body>
 
 </html>

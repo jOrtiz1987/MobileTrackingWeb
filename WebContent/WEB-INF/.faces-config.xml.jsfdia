@@ -166,6 +166,12 @@
     NAME="output" PATH="/reportes/visita.xhtml"
     TARGET="rules:#reportes#visita.xhtml" TITLE="visitas" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#mapa#mapa.xhtml:3" NAME="item3"
+   PATH="/mapa/mapa.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="trayectorias::#reportes#trayectoria.xhtml"
+    NAME="output" PATH="/reportes/trayectoria.xhtml"
+    TARGET="rules:#reportes#trayectoria.xhtml" TITLE="trayectorias" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#reportes#visita.xhtml"
   PATH="/reportes/visita.xhtml" SHAPE="576,577,0,0" model-entity="JSFProcessGroup">
