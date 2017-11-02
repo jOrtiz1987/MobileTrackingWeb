@@ -18,12 +18,12 @@ public class MapaBean implements Serializable{
 	//private String mapKey ="AIzaSyDgsBvMxxNkpkY2iNjyd-gn8Xqd1vRlDr0";
 	private EdificioHistoricoService edificioHistoricoService;
 	private EdificioHistorico edificioHistorico;
-	private List<EdificioHistorico> edificios;
+	private List<EdificioHistorico> edificiosHistoricos;
 	
 	public MapaBean(){
 		edificioHistorico = new EdificioHistorico();
-		edificios = edificioHistoricoService.buscar(edificioHistorico);
-		System.out.println("Mapa Bean edificios = " + edificios.size());
+		//edificios = edificioHistoricoService.buscar(edificioHistorico);
+		//System.out.println("Mapa Bean edificios = " + edificios.size());
 	}
 	
 	public void finalize() throws Throwable {
@@ -32,8 +32,8 @@ public class MapaBean implements Serializable{
 
 	public String llenarTabla(){
 		edificioHistorico = new EdificioHistorico();
-		edificios = edificioHistoricoService.buscar(edificioHistorico);
-		System.out.println("LlenarTabla edificios = " + edificios.size());
+		edificiosHistoricos = edificioHistoricoService.buscar(edificioHistorico);
+		//System.out.println("LlenarTabla edificios = " + edificios.size());
 		return "mapa";
 	}
 
@@ -45,15 +45,15 @@ public class MapaBean implements Serializable{
 		this.mapKey = mapKey;
 	}*/
 
-	public List<EdificioHistorico> getEdificios() {
+	public List<EdificioHistorico> getEdificiosHistoricos() {
 		edificioHistorico = new EdificioHistorico();
-		edificios = edificioHistoricoService.buscar(edificioHistorico);
-		System.out.println("Get edificios = " + edificios.size());
-		return edificios;
+		edificiosHistoricos = edificioHistoricoService.buscar(edificioHistorico);
+		//System.out.println("Get edificios = " + edificios.size());
+		return edificiosHistoricos;
 	}
 
-	public void setEdificios(List<EdificioHistorico> edificios) {
-		this.edificios = edificios;
+	public void setEdificiosHistoricos(List<EdificioHistorico> edificiosHistoricos) {
+		this.edificiosHistoricos = edificiosHistoricos;
 	}
 
 	public EdificioHistorico getEdificioHistorico() {
