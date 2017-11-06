@@ -95,6 +95,9 @@ public class EdificioHistorico implements java.io.Serializable {
 		this.imagen = imagen;
 	}
 
-	
+	public String toString(){
+		return "[idEdificioHistorico=" + idEdificioHistorico + ", descripcion=" + descripcion + ", latitud="
+	            + latitud + ", longitud=" + longitud + ", imagen=" + imagen + "]";
+	}
 	
 }

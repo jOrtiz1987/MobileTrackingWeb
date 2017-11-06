@@ -41,6 +41,17 @@
           center: bangalore
         });
 
+        var cadena = "#{mapaBean.jSonEdHist}";
+        console.log(cadena);
+        /*var edificios = "#{mapaBean.edificiosHistoricos}";
+        console.log(edificios);
+        for (var index = 0; index &lt; edificios.length; index++) {
+            var element = edificios[index];
+            console.log(element);
+        }
+        for (var edificio in edificios) {
+        	console.log("En el edificio '" + edificio + "' hay este descripcion: " + edificios[edificio]);
+        }*/
         // This event listener calls addMarker() when the map is clicked.
         /*google.maps.event.addListener(map, 'click', function(event) {
           addMarker(event.latLng, map);
