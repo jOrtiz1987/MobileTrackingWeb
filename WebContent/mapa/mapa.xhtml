@@ -37,28 +37,40 @@
         
         var bangalore = { lat: 22.773290, lng: -102.575219 };
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
+          zoom: 18,
           center: bangalore
         });
 
         var cadena = "#{mapaBean.jSonEdHist}";
-        console.log(cadena);
-        /*var edificios = "#{mapaBean.edificiosHistoricos}";
-        console.log(edificios);
-        for (var index = 0; index &lt; edificios.length; index++) {
-            var element = edificios[index];
-            console.log(element);
+        //console.log(cadena);
+        //Obtengo un arreglo de edificios
+        var res = cadena.split("[idEdificioHistorico");
+        //console.log(res);
+        for (var index = 1; index &lt; res.length; index++) {
+            //console.log(res[index]);
+            //Obtengo un arreglo de campos
+            var resDos = res[index].split(",");
+            //console.log(resDos);
+            //Obtengo descripcion
+            var descripcionArr = resDos[1].split("=");
+            var descripcion = descripcionArr[1];
+            //Obtengo latitud
+            var latitudArr = resDos[2].split("=");
+            var latitud = latitudArr[1];
+            //Obtengo longitud
+            var longitudArr = resDos[3].split("=");
+            var longitud = longitudArr[1];
+            //console.log(descripcion + " " + latitud + " " + longitud);
+            var coordenadas = {lat: parseFloat(latitud), lng: parseFloat(longitud)};
+            addMarker(coordenadas, map);
         }
-        for (var edificio in edificios) {
-        	console.log("En el edificio '" + edificio + "' hay este descripcion: " + edificios[edificio]);
-        }*/
         // This event listener calls addMarker() when the map is clicked.
         /*google.maps.event.addListener(map, 'click', function(event) {
           addMarker(event.latLng, map);
         });*/
 
         // Add a marker at the center of the map.
-        addMarker(bangalore, map);
+        //addMarker(bangalore, map);
       }
 
       // Adds a marker to the map.
