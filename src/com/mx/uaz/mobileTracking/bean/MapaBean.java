@@ -24,7 +24,7 @@ public class MapaBean implements Serializable{
 	private EdificioHistorico edificioHistorico;
 	private List<EdificioHistorico> edificiosHistoricos;
 	private Integer tamano;
-	private String jSonEdHist = "{ \"putita\" : \"pugo\"}";
+	private String jSonEdHist = "";
 	
 	public MapaBean(){
 		edificioHistorico = new EdificioHistorico();

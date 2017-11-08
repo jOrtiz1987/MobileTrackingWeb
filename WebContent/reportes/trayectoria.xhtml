@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -6,9 +7,136 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j">
 	
-<ui:composition template="../template.xhtml">
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8"/>
+    <link href="./css/default.css" rel="stylesheet" type="text/css" />
+	<link href="./css/cssLayout.css" rel="stylesheet" type="text/css" />
+    <title>Mobile Tracking</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgsBvMxxNkpkY2iNjyd-gn8Xqd1vRlDr0"></script>
+    <script>
+ // In the following example, markers appear when the user clicks on the map.
+    // Each marker is labeled with a single alphabetical character.
+    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var labelIndex = 0;
 
-	<ui:define name="content">
+    function initialize() {
+      
+      var bangalore = { lat: 22.773290, lng: -102.575219 };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: bangalore
+      });
+
+      var cadena = "#{trayectoriasBean.jSonVisit}";
+      //console.log(cadena);
+      //Obtengo un arreglo de edificios
+      var res = cadena.split("[idEdificioHistorico");
+      //console.log(res);
+      poly = new google.maps.Polyline({
+	    strokeColor: '#000000',
+	    strokeOpacity: 1.0,
+	    strokeWeight: 3
+	  });
+      for (var index = 1; index &lt; res.length; index++) {
+          //console.log(res[index]);
+          //Obtengo un arreglo de campos
+          var resDos = res[index].split(",");
+          //console.log(resDos);
+          //Obtengo descripcion
+          var descripcionArr = resDos[1].split("=");
+          var descripcion = descripcionArr[1];
+          //Obtengo latitud
+          var latitudArr = resDos[2].split("=");
+          var latitud = latitudArr[1];
+          //Obtengo longitud
+          var longitudArr = resDos[3].split("=");
+          var longitud = longitudArr[1];
+          //console.log(descripcion + " " + latitud + " " + longitud);
+          var coordenadas = {lat: parseFloat(latitud), lng: parseFloat(longitud)};
+          var path = poly.getPath();
+          path.push(new google.maps.LatLng(parseFloat(latitud), parseFloat(longitud)));
+          poly.setPath(path);
+          addMarker(coordenadas, map);
+      }
+	  poly.setMap(map);
+      // This event listener calls addMarker() when the map is clicked.
+      /*google.maps.event.addListener(map, 'click', function(event) {
+        addMarker(event.latLng, map);
+      });*/
+
+      // Add a marker at the center of the map.
+      //addMarker(bangalore, map);
+    }
+    
+    // Adds a marker to the map.
+    function addMarker(location, map) {
+      // Add the marker at the clicked location, and add the next-available label
+      // from the array of alphabetical characters.
+      var marker = new google.maps.Marker({
+        position: location,
+        label: labels[labelIndex++ % labels.length],
+        map: map
+      });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+  
+  	<div id="top_menu"><f:view>
+		<h:form>
+			<rich:toolBar>
+				<rich:dropDownMenu>
+					<f:facet name="label">
+						<h:outputText value="Catálogos" />
+					</f:facet>
+					<rich:menuItem icon="/imagenes/auxiliar.png" value="Edificios Historicos"
+						action="#{edificioHistoricoBean.llenarTabla}" />
+					<rich:menuItem icon="/imagenes/bancaria.png" value="Usuarios"
+						action="#{usuarioBean.llenarTabla}" />
+				</rich:dropDownMenu>
+				<rich:dropDownMenu>
+					<f:facet name="label">
+						<h:outputText value="Reportes" />
+					</f:facet>
+					<rich:menuItem icon="/imagenes/auxiliar.png" value="Visitas a Edificios Historicos"
+						action="#{visitasBean.llenarTabla}" />
+					<rich:menuItem icon="/imagenes/bancaria.png" value="Trayectorias de Usuarios"
+						action="#{trayectoriasBean.llenarTabla}" />
+				</rich:dropDownMenu>
+				<rich:dropDownMenu>
+					<f:facet name="label">
+						<h:outputText value="Usuarios Activos" />
+					</f:facet>
+					<rich:menuItem icon="/imagenes/auxiliar.png" value="Mapa de Usuarios Activos"
+						action="#{mapaBean.llenarTabla}" />
+				</rich:dropDownMenu>
+				<rich:dropDownMenu>
+					<f:facet name="label">
+						<h:outputText value="Salir" />
+					</f:facet>
+					<rich:menuItem icon="/imagenes/Salir.png" value="Salir" action="#{loginBean.salir}" />
+				</rich:dropDownMenu>
+			</rich:toolBar>
+		</h:form>
+	</f:view></div>
+	
+	<div id="panel">
 		<f:view>
 			<center>
 				<rich:panel id="pntrayectorias" style="height:300px;width: 600px;">
@@ -20,7 +148,7 @@
 							<f:selectItem itemValue="0" itemLabel="Selecciona un Usuario"/>
 			            	<f:selectItems value="#{trayectoriasBean.listUsuarios}" var="usuario" itemValue="#{usuario.value}" itemLabel="#{usuario.label}" />
 						</h:selectOneMenu>
-						<h:outputText value="Edificio Historico: " />
+						<h:outputText value="Fecha: " />
 						<rich:calendar value="#{trayectoriasBean.fecha}" />
 					</h:panelGrid>
 					<rich:dataTable id="visitaTable" value="#{trayectoriasBean.visitas}" var="visitaLista"
@@ -52,7 +180,9 @@
 				</rich:panel>
 			</center>
 		</f:view>
-	</ui:define>
-</ui:composition>
-
+	</div>
+	
+	<div id="map"></div>
+	
+  </body>
 </html>

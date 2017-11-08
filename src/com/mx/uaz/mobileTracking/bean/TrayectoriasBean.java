@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
+import org.json.JSONArray;
+
 import com.mx.uaz.mobileTracking.model.Usuario;
 import com.mx.uaz.mobileTracking.model.Visita;
 import com.mx.uaz.mobileTracking.service.EdificioHistoricoService;
@@ -28,6 +30,7 @@ public class TrayectoriasBean implements Serializable{
 	private Date fecha;
 	private List<Visita> visitas;
 	private List<SelectItem> listUsuarios = new ArrayList<SelectItem>();
+	private String jSonVisit = "";
 	
 	public TrayectoriasBean(){
 		visita = new Visita();
@@ -36,19 +39,43 @@ public class TrayectoriasBean implements Serializable{
 	public void finalize() throws Throwable {}
 	
 	public void buscar(){
-		System.out.println("buscar");
+		//System.out.println("buscar");
 		visita = new Visita();
 		visita.setFecha(fecha);
-		System.out.println("Fecha = " + fecha);
+		//System.out.println("Fecha = " + fecha);
 		visita.setUsuario(usuarioService.buscar(idUsuario));
-		System.out.println("Usuario = "+ visita.getUsuario());
+		//System.out.println("Usuario = "+ visita.getUsuario());
 		visitas = visitaService.buscar(visita);
+		JSONArray jsonArray = new JSONArray();	
+		for(Visita visit: visitas){
+			jsonArray.put(visit);
+		}
+		jSonVisit = jsonArray.toString();
+		String tem = "";
+		for(int i=2; i< (jSonVisit.length()-2); i++){
+			tem = tem + jSonVisit.charAt(i);
+		}
+		tem = tem.replace('"', ' ');
+		jSonVisit = tem;
+		System.out.println(jSonVisit);
 	}
 	
 	public String llenarTabla(){
-		System.out.println("llenar tabla");
+		//System.out.println("llenar tabla");
 		visita = new Visita();
 		visitas = visitaService.buscar(visita);
+		/*JSONArray jsonArray = new JSONArray();	
+		for(Visita visit: visitas){
+			jsonArray.put(visit);
+		}
+		jSonVisit = jsonArray.toString();
+		String tem = "";
+		for(int i=2; i< (jSonVisit.length()-2); i++){
+			tem = tem + jSonVisit.charAt(i);
+		}
+		tem = tem.replace('"', ' ');
+		jSonVisit = tem;
+		System.out.println(jSonVisit);*/
 		return "trayectorias";
 	}
 	
@@ -77,7 +104,7 @@ public class TrayectoriasBean implements Serializable{
 	}
 
 	public Visita getVisita() {
-		System.out.println("get visitas");
+		//System.out.println("get visitas");
 		return visita;
 	}
 	
@@ -121,6 +148,14 @@ public class TrayectoriasBean implements Serializable{
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getjSonVisit() {
+		return jSonVisit;
+	}
+
+	public void setjSonVisit(String jSonVisit) {
+		this.jSonVisit = jSonVisit;
 	}
 	
 }

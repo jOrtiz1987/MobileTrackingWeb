@@ -80,4 +80,10 @@ public class Visita implements java.io.Serializable {
 		this.fecha = fecha;
 	}
 
+	public String toString(){
+		return "[idEdificioHistorico=" + edificioHistorico.getIdEdificioHistorico()+ ", descripcion=" 
+				+ edificioHistorico.getDescripcion() + ", latitud=" + edificioHistorico.getLatitud() 
+				+ ", longitud=" + edificioHistorico.getLongitud() + ", imagen=" + edificioHistorico.getImagen() + "]";
+	}
+	
 }
